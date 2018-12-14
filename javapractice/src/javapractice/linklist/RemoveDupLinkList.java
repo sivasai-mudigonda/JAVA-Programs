@@ -1,4 +1,4 @@
-package javapractice;
+package javapractice.linklist;
 
 import java.util.HashSet;
 import java.util.Set;

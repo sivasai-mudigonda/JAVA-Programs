@@ -1,4 +1,4 @@
-package javapractice;
+package javapractice.arrays;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;

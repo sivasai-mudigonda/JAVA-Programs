@@ -1,4 +1,4 @@
-package javapractice;
+package javapractice.arrays;
 
 public class CStyleReverseString {
 
