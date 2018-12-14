@@ -9,6 +9,25 @@ public class LinkedList {
 			node=node.next;
 		}
 	}
+	
+	// Insert Integer Elements in to Linked List.
+	public void push(Object[] valLst) {
+		boolean isFirstEle = false;
+		Node tempNode = null;
+		for(Object val:valLst) {
+			Node newNode= new Node((Integer)val);
+			if(tempNode==null && !isFirstEle) {
+				tempNode=newNode;
+				head=tempNode;
+				isFirstEle=true;
+				continue;
+			}
+			if(tempNode!=null) {
+				tempNode.next=newNode;
+				tempNode=tempNode.next;
+			}
+		}
+	}
 }
 
 class Node {
