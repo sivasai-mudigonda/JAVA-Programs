@@ -24,6 +24,17 @@ class Result {
 	
 	// Optimized Way
 	// Using Juggling Algorithm for rotation
+		/**
+		 * Juggling Algorithm:
+		 * Let arr[] be {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} and d = 3
+					a) Elements are first moved in first set – 
+					         arr[] after this step --> {4 2 3 7 5 6 10 8 9 1 11 12}
+					b)    Then in second set.
+					          arr[] after this step --> {4 5 3 7 8 6 10 11 9 1 2 12}
+					c)    Finally in third set.
+					          arr[] after this step --> {4 5 6 7 8 9 10 11 12 1 2 3} 
+		 */
+	
 	// Refer Video in "https://www.geeksforgeeks.org/array-rotation/" for Juggling Algo explanation
 	public static List<Integer> getMaxElementIndexesOptimised(List<Integer> a, List<Integer> rotate) {
 		 List<Integer> resultLst=new ArrayList<Integer>();
@@ -55,6 +66,7 @@ class Result {
 	
 	// calculating GCD using euclidean Algorithm
 	// Refer "https://www.youtube.com/watch?v=JUzYl1TYMcU" to understand euclidean Algorithm
+	// GCD gives us number of sets in the array that need to be rotated
 	private static int gcd(int a,int b) {
 		if(b==0) {
 			return a;

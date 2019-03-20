@@ -1,7 +1,9 @@
-package javapractice.stacks_queues;
+package stacks_queues;
 
 import static org.junit.Assert.*;
+
 import java.util.Arrays;
+
 import org.junit.Test;
 
 /* https://www.youtube.com/watch?v=DxW7VAsdX0o
