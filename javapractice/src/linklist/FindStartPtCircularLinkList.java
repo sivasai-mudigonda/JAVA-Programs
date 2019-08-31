@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import leetcode.Node;
+import leetcode.ListNode;
 
 /*
 * Given a circular linked list, implement an algorithm which returns node at the beginning
@@ -31,10 +31,10 @@ public class FindStartPtCircularLinkList {
 		arrLst.add(3);
 		arrLst.add(4);
 		lst.push(arrLst.toArray());
-		Node lastNode = lst.getLastNode(); // Loop start point is 4
+		ListNode lastNode = lst.getLastNode(); // Loop start point is 4
 		lastNode.next = lst.head;
 		System.out.println("Hashing Approach");
-		Node cirstartPt = findLoopStartPt(lst.head);
+		ListNode cirstartPt = findLoopStartPt(lst.head);
 		lst.printList(cirstartPt);
 
 		System.out.println("Two Pointer Approach");
@@ -43,11 +43,11 @@ public class FindStartPtCircularLinkList {
 	}
 
 	// Using Hashing
-	private static Node findLoopStartPt(Node n) {
+	private static ListNode findLoopStartPt(ListNode n) {
 		Set<Integer> uniqSet = new HashSet<>();
 		while (n != null) {
 			if (uniqSet.contains(n.data)) {
-				return new Node(n.data);
+				return new ListNode(n.data);
 			}
 			uniqSet.add(n.data);
 			n = n.next;
@@ -56,13 +56,13 @@ public class FindStartPtCircularLinkList {
 	}
 
 	// Using 2 pointers
-	private static Node findLoopStartPtTwoPt(Node n) {
+	private static ListNode findLoopStartPtTwoPt(ListNode n) {
 		if (n == null) {
 			return null;
 		}
 		// Two pointers
-		Node n1 = n;
-		Node n2 = n;
+		ListNode n1 = n;
+		ListNode n2 = n;
 
 		// Find meeting point
 		while (n2.next != null) {
@@ -89,7 +89,7 @@ public class FindStartPtCircularLinkList {
 		}
 
 		// Now n2 points to the start of the loop.
-		return new Node(n2.data);
+		return new ListNode(n2.data);
 	}
 
 }

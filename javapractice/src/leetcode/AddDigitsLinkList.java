@@ -46,8 +46,8 @@ public class AddDigitsLinkList {
 
 	// Using Recursive
 	static LinkedList result = null;
-	static Node prev;
-	private static Node addDigitsUsingRecurssion(Node d1, Node d2, Node res, int carry) {
+	static ListNode prev;
+	private static ListNode addDigitsUsingRecurssion(ListNode d1, ListNode d2, ListNode res, int carry) {
 		
 		if (d1 == null && d2 == null && carry==0) {
 			return null;
@@ -65,7 +65,7 @@ public class AddDigitsLinkList {
 		} else {
 			carry=0;
 		}
-		res=new Node(sum%10);
+		res=new ListNode(sum%10);
 		if(result==null) {
 			result= new LinkedList();
 			prev=result.head=res;
@@ -77,7 +77,7 @@ public class AddDigitsLinkList {
 		}
 		
 		if (d1 == null && d2 == null && carry>0) {
-			prev.next=new Node(carry);
+			prev.next=new ListNode(carry);
 		}
 		return result.head;
 	}
@@ -85,9 +85,9 @@ public class AddDigitsLinkList {
 	
 
 	// Using Dynamic Programming{Loop}
-	private static LinkedList addDigits(Node d1, Node d2) {
+	private static LinkedList addDigits(ListNode d1, ListNode d2) {
 		LinkedList result = null;
-		Node prev = null, temp = null;
+		ListNode prev = null, temp = null;
 		int sum, carry = 0;
 		if (d1 == null && d2 == null) {
 			return result;
@@ -99,7 +99,7 @@ public class AddDigitsLinkList {
 			} else {
 				carry = 0;
 			}
-			temp = new Node(sum % 10);
+			temp = new ListNode(sum % 10);
 			if (result == null) {
 				result = new LinkedList();
 				result.head = temp;
@@ -115,7 +115,7 @@ public class AddDigitsLinkList {
 			}
 		}
 		if (carry > 0) {
-			temp.next = new Node(carry);
+			temp.next = new ListNode(carry);
 		}
 		return result;
 	}

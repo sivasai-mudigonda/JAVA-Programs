@@ -26,26 +26,29 @@ public class RemoveNthNode {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Node linkLst = new Node(5); // 6th node
-		linkLst.next = new Node(6); // 5th node
-		linkLst.next.next = new Node(7); // 4th node
-		linkLst.next.next.next = new Node(8); // 3rd node
-		linkLst.next.next.next.next = new Node(9); // 2nd node
-		linkLst.next.next.next.next.next = new Node(10); // 1st node
+		ListNode linkLst = new ListNode(5); // 6th node
+		linkLst.next = new ListNode(6); // 5th node
+		linkLst.next.next = new ListNode(7); // 4th node
+		linkLst.next.next.next = new ListNode(8); // 3rd node
+		linkLst.next.next.next.next = new ListNode(9); // 2nd node
+		linkLst.next.next.next.next.next = new ListNode(10); // 1st node
 		System.out.println("Before : ");
 		printLinkLst(linkLst);
-		linkLst = removeNthFromEnd(linkLst, 4);
+		linkLst = removeNthFromEnd(linkLst, 1);
 		// linkLst = removeNthFromEnd(linkLst,6);
 		System.out.println("After : ");
 		printLinkLst(linkLst);
 	}
 
-	private static Node removeNthFromEnd(Node head, int n) {
-		Node slow = head;
-		Node fast = head;
+	private static ListNode removeNthFromEnd(ListNode head, int n) {
+		ListNode slow = head;
+		ListNode fast = head;
 		for (int i = 0; i < n; i++) {
 			if (fast != null) {
 				fast = fast.next;
+			} else {
+				System.out.println("There is no "+n+" node in the linked list");
+				return null;
 			}
 		}
 
@@ -61,21 +64,11 @@ public class RemoveNthNode {
 		return head;
 	}
 
-	private static void printLinkLst(Node head) {
-		Node curr = head;
+	private static void printLinkLst(ListNode head) {
+		ListNode curr = head;
 		while (curr != null) {
 			System.out.println(curr.data + " --> ");
 			curr = curr.next;
-		}
-	}
-
-	private static class Node {
-		int data;
-		Node next;
-
-		Node(int data) {
-			this.data = data;
-			next = null;
 		}
 	}
 }

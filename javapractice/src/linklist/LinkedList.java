@@ -1,11 +1,11 @@
 package linklist;
 
-import leetcode.Node;
+import leetcode.ListNode;
 
 public class LinkedList {
-	public Node head;
+	public ListNode head;
 
-	public void printList(Node node) {
+	public void printList(ListNode node) {
 		while (node != null) {
 			System.out.println(node.data);
 			node = node.next;
@@ -13,7 +13,7 @@ public class LinkedList {
 	}
 	
 	// To get Last Node in Linked List.
-	public Node getLastNode() {
+	public ListNode getLastNode() {
 		while (head.next != null) {
 			head = head.next;
 		}
@@ -23,9 +23,9 @@ public class LinkedList {
 	// Insert Integer Elements in to Linked List.
 	public void push(Object[] valLst) {
 		boolean isFirstEle = false;
-		Node tempNode = null;
+		ListNode tempNode = null;
 		for (Object val : valLst) {
-			Node newNode = new Node((Integer) val);
+			ListNode newNode = new ListNode((Integer) val);
 			if (tempNode == null && !isFirstEle) {
 				tempNode = newNode;
 				head = tempNode;

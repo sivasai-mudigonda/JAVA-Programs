@@ -44,7 +44,7 @@ public class RomanToInteger {
 			int curr = map.get(str.charAt(i));
 			if (curr < prev) {
 				// eg:IV, IX
-				res += (prev - curr) - prev;
+				res -= curr;
 			} else {
 				res += curr;
 			}

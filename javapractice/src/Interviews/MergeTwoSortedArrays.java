@@ -47,5 +47,4 @@ public class MergeTwoSortedArrays {
 		}
 		return arr3;
 	}
-
 }
