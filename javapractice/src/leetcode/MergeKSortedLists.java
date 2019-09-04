@@ -45,7 +45,7 @@ public class MergeKSortedLists {
 	
 	private static void printListNode(ListNode li) {
 		while(li!=null) {
-			System.out.println(li.val);
+			System.out.println(li.data);
 			li=li.next;
 		}
 	}
@@ -56,7 +56,7 @@ public class MergeKSortedLists {
 		}
 		PriorityQueue<ListNode> pq= new PriorityQueue<ListNode>(new Comparator<ListNode>() {
 			public int compare(ListNode l1, ListNode l2) {
-				return l1.val-l2.val;
+				return l1.data-l2.data;
 			}
 		});
 				
@@ -79,14 +79,4 @@ public class MergeKSortedLists {
 		}
 		return head.next;
 	}
-	
-	private static class ListNode {
-		int val;
-		ListNode next;
-		
-		public ListNode(int val) {
-			this.val = val; 
-		}
-	}
-
 }
