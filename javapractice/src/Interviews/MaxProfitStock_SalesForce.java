@@ -20,7 +20,7 @@ public class MaxProfitStock_SalesForce {
 		int min_buy_price = arr[0];
 		for (int i = 0; i < arr.length; i++) {
 			profit = Math.max(profit, arr[i] - min_buy_price);
-			min_buy_price = Math.max(arr[i], min_buy_price);
+			min_buy_price = Math.min(arr[i], min_buy_price);
 		}
 		System.out.println(profit);
 	}
