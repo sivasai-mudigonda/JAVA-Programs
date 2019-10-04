@@ -151,7 +151,7 @@ public class Trie {
     		if(!node.isLeaf) {
     			return false;
     		}
-    		node.isLeaf= true;
+    		node.isLeaf= false;
     		//if current has no other mapping then return true
     		return node.dictonary.size()==0;
     	}
