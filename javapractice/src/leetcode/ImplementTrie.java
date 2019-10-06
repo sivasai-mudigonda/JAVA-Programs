@@ -9,30 +9,29 @@ import java.util.Map;
 /**
  * @author SIVA SAI
  * 
- * Leet Code : 208. Implement Trie (Prefix Tree)
+ * LeetCode Ques : 208. Implement Trie (Prefix Tree)
+ * https://leetcode.com/problems/implement-trie-prefix-tree/
  * 
  * Implement a trie with insert, search, and startsWith methods.
-
-Example:
-
-Trie trie = new Trie();
-
-trie.insert("apple");
-trie.search("apple");   // returns true
-trie.search("app");     // returns false
-trie.startsWith("app"); // returns true
-trie.insert("app");   
-trie.search("app");     // returns true
-Note:
-
-You may assume that all inputs are consist of lowercase letters a-z.
-All inputs are guaranteed to be non-empty strings.
+ * 
+	Example:
+	Trie trie = new Trie();
+	trie.insert("apple");
+	trie.search("apple");   // returns true
+	trie.search("app");     // returns false
+	trie.startsWith("app"); // returns true
+	trie.insert("app");   
+	trie.search("app");     // returns true
  *
+ * Note:
+ * You may assume that all inputs are consist of lowercase letters a-z.
+ * All inputs are guaranteed to be non-empty strings.
  *
- *Refer https://www.youtube.com/watch?v=AXjmTQ8LEoI {For Video}
- *https://github.com/mission-peace/interview/blob/master/src/com/interview/suffixprefix/Trie.java {For Code}
+ *Solution :
+ *	Refer https://www.youtube.com/watch?v=AXjmTQ8LEoI {For Video}
+ *	https://github.com/mission-peace/interview/blob/master/src/com/interview/suffixprefix/Trie.java {For Code}
  */
-public class Trie {
+public class ImplementTrie {
 
 	private TrieNode root = new TrieNode();
 	
@@ -44,13 +43,13 @@ public class Trie {
 	 * boolean param_3 = obj.startsWith(prefix);
 	 */
 	public static void main(String[] args) {
-		Trie trieNode = new Trie();
+		ImplementTrie trieNode = new ImplementTrie();
 		trieNode.insert("apple");
-		System.out.println(trieNode.search("apple"));   // returns true
-		System.out.println(trieNode.search("app"));     // returns false
-		System.out.println(trieNode.startsWith("app")); // returns true
+		System.out.println("Is 'apple' word present = " +trieNode.search("apple"));   // returns true
+		System.out.println("Is 'app' word present = "+trieNode.search("app"));     // returns false
+		System.out.println("Is there a word starting with'app' = "+trieNode.startsWith("app")); // returns true
 		trieNode.insert("app");   
-		System.out.println(trieNode.search("app"));     // returns true
+		System.out.println("Is 'apple' word present = "+trieNode.search("app"));     // returns true
 		
 	}
 	
