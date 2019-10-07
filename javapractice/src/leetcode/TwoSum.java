@@ -22,7 +22,7 @@ public class TwoSum {
 			if(hm.containsKey(compliment)) {
 				return new int[] {hm.get(compliment),i};
 			}
-			hm.put(nums[i], i);
+			hm.put(compliment, i);
 		}
 		throw new IllegalArgumentException("No two sum solution");
 	}
