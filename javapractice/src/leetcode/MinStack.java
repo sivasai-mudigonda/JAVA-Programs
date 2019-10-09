@@ -27,13 +27,13 @@ import org.junit.Test;
 * 2 * x{current maxEle} – y = prev maxEle
 */
 
-public class FindMinEleStack {
+public class MinStack {
 	Stack<Integer> s; // Min Ele
 	Stack<Integer> s1; // Max Ele
 	Integer minEle;
 	Integer maxEle;
 
-	public FindMinEleStack() {
+	public MinStack() {
 		s = new Stack<>();
 		s1 = new Stack<>();
 	}
@@ -128,7 +128,7 @@ public class FindMinEleStack {
 
 	@Test
 	public void testgetMin() {
-		FindMinEleStack getMin = new FindMinEleStack();
+		MinStack getMin = new MinStack();
 		getMin.push(3);
 		getMin.push(5);
 		getMin.getMinMax();
