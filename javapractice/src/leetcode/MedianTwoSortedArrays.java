@@ -48,12 +48,12 @@ public class MedianTwoSortedArrays {
 	
 	public static int findKth(int[] a, int aStart,int[] b, int bStart, int k) {
 		if(aStart >= a.length) {
-			// If any of the two arrays is empty, then the kth element is the non-empty array’s kth element
+			// If any of the two arrays is empty, then the kth element is the non-empty arrayâ€™s kth element
 			return b[bStart+k-1];
 		}
 		
 		if(bStart >= b.length) {
-			// If any of the two arrays is empty, then the kth element is the non-empty array’s kth element
+			// If any of the two arrays is empty, then the kth element is the non-empty arrayâ€™s kth element
 			return a[aStart+k-1]; 
 		}
 		
@@ -62,8 +62,8 @@ public class MedianTwoSortedArrays {
 			return Math.min(a[aStart], b[bStart]);
 		}
 		
-		int indexA=aStart+k/2-1; // First half of first array {Idea derived from Binary Search}
-		int indexB=bStart+k/2-1; // Second half of first array
+		int indexA=aStart+k/2-1; // Move to mid of first array {Idea derived from Binary Search}
+		int indexB=bStart+k/2-1; // Move to mid of second array
 		
 		int key1=indexA < a.length ? a[indexA]:Integer.MAX_VALUE;
 		int key2=indexB < b.length ? b[indexB]:Integer.MAX_VALUE;
@@ -72,7 +72,7 @@ public class MedianTwoSortedArrays {
 			// Send k as k-k/2 as we send only half of array a.
 			return findKth(a,aStart+k/2,b,bStart,k-k/2);
 		} else {
-			// Consider only second half of a array.
+			// Consider only second half of b array.
 			// Send k as k-k/2 as we send only half of array b.
 			return findKth(a,aStart,b,bStart+k/2,k-k/2);
 		}

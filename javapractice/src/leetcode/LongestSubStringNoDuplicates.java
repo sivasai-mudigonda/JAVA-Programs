@@ -37,7 +37,7 @@ public class LongestSubStringNoDuplicates {
 				count = 0;
 			}
 		}
-		return globalCnt;
+		return Math.max(globalCnt,count);
 	}
 
 }
