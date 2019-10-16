@@ -34,6 +34,9 @@ package leetcode;
  * Follow up:
  * If this function is called many times, how would you optimize it?
  * 
+ * For solution, refer
+ * https://medium.com/@monisha.mary.mathew/reverse-bits-b936bee153a0
+ * 
  * Time Complexity = O(32){Constant Time = O(1)}
  * Space Complexity = o(1)
  */
