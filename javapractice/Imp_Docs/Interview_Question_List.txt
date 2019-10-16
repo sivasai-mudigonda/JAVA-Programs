@@ -1,0 +1,68 @@
+Oracle:
+Linked List Cycle
+Number of Islands
+TwoSum
+
+Google:
+Maze Problem {BFS}- Shortest Path
+Circular Graph
+
+Sales Force:
+Buy & Sell Stocks
+
+Uber:
+Merge intervals
+
+Atlasian:
+BFS-Level Order Traversal
+MergeTwoSortedArrays
+
+Amazon:
+Virtal Keyboard Traversal
+
+SQUASH: {Unix Process}
+-> Refer LeetCode Kill process problem
+
+private static void mapProccess(File f1){
+  if(f1==null){
+     return;
+  }
+  BufferReader rd = new BufferReader(f1);
+  int i=0;
+  int count =0;
+	// 2nd,3rd, 10th
+  rd.readLine();
+  Map<Integer,List<Integer>> psMap = new HashMap<>();
+  Map<Integer,String> cmdMap = new HashMap();
+  while((i=rd.readLine())!=-1){
+     String str = (String)i;
+     String[] strArr = str.split("\s");
+     if(psMap.containsKey(strArr[2]) ){
+         List<Integer> li = psMap.get(strArr[2]);
+         li.add(strArr[1]);
+         psMap.put(strArr[2],li);
+     }
+     psMap.put(strArr[1], new ArrayList<>());
+     cmdMap.put(strArr[1], strArr[9]);
+  }
+  
+  Queue queue = new LinkedList<>();
+  queue.offer(psMap.get(0));
+  int level=1;
+  while(!queue.isEmpty()){
+     int ps = queue.poll();
+     int currProcessLev = queue.poll();
+     int i=0;
+     while(i<currProcessLev){
+      System.out.println("\t");
+      i++;
+     }
+     System.out.println(ps +" "+cmdMap.get(ps));
+     if(psMap.containsKey(ps) ){
+         for(int n: psMap.get(ps) ){
+            queue.add(n);
+            queue.add(level);
+	 }    
+     }
+  }
+}
