@@ -11,12 +11,17 @@ import java.util.Map;
 /**
  * @author SIVA SAI
  *
+ * LeetCode Ques - 149 {Max Points on a Line}
+ * https://leetcode.com/problems/max-points-on-a-line/
  *
- *Given n points on a 2D plane, find the maximum number of points that lie on the same straight line?
+ * Given n points on a 2D plane, find the maximum number of points that lie on the same straight line?
  *
- *Refer https://github.com/awangdev/LintCode/blob/master/Java/Max%20Points%20on%20a%20Line.java
+ * For Solution, 
+ * refer https://github.com/awangdev/LintCode/blob/master/Java/Max%20Points%20on%20a%20Line.java
  *
- *Time Complexity =O(N)
+ * Time Complexity =O(N)
+ * Space Complexity =o(1)
+ * 
  */
 public class MaxPointsOnLine {
 
