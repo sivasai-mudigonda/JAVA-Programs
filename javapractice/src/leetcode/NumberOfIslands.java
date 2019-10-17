@@ -33,8 +33,8 @@ public class NumberOfIslands {
                     	    	{ 0, 1, 0, 0, 1 }, 
                     	    	{ 1, 0, 0, 1, 1 }, 
                     	    	{ 0, 0, 0, 0, 0 },
-                    		{ 1, 0, 1, 0, 1 } 
-                    	    	};
+                    		    { 1, 0, 1, 0, 1 } 
+                    	    };
 	System.out.println("Number of Islands = " +calClusterCnt(M)); // Expected Output = 6
 
 	/*
