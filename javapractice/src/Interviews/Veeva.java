@@ -1,4 +1,4 @@
-package practice;
+package Interviews;
 
 class Veeva {
 	public static void main(String str[]) {
