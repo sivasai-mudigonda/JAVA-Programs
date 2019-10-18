@@ -64,7 +64,7 @@ public class CourseSchedule {
 		if(numCourses<=0 || prerequisites==null || prerequisites.length==0) {
 			return true; // We can complete all the courses
 		}
-		// Construct Graph with nodes and edges, that is represented by prerequisites
+		// Construct Graph with vertices and edges, that is represented by prerequisites
 		Map<Integer,List<Integer>> adjMap = new HashMap<>();
 		for(int[] edge : prerequisites) {
 			List<Integer> neighbors=null;
@@ -95,7 +95,7 @@ public class CourseSchedule {
 	 * @return
 	 * 
 	 * DFS+Backtracking
-	 * 
+	 * Identifying a way through which we can visit all nodes of a graph{without circle} is called topological sorting
 	 */
 	private boolean isCycle(int vertexId, int[] visited, Map<Integer,List<Integer>> adjMap) {
 		if(visited[vertexId]==-1) {
