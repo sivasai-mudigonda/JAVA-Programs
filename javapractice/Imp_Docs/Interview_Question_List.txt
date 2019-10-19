@@ -23,6 +23,10 @@ Virtal Keyboard Traversal
 SQUASH: {Unix Process}
 -> Refer LeetCode Kill process problem
 
+Williams Sonoma:
+Garbage Collection:
+https://www.journaldev.com/2856/java-jvm-memory-model-memory-management-in-java#memory-management-in-java-8211-young-generation
+
 private static void mapProccess(File f1){
   if(f1==null){
      return;

@@ -11,29 +11,30 @@ import java.util.Map;
 /**
  * @author SIVA SAI
  *
- *Leet Code : 212. Word Search II
- *https://leetcode.com/problems/word-search-ii/
+ * Leet Code : 212. Word Search II
+ * https://leetcode.com/problems/word-search-ii/
  *
- *Given a 2D board and a list of words from the dictionary, find all words in the board.
-
-Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
-
-Example:
-
-Input: 
-words = ["oath","pea","eat","rain"] and board =
-[
-  ['o','a','a','n'],
-  ['e','t','a','e'],
-  ['i','h','k','r'],
-  ['i','f','l','v']
-]
-
-Output: ["eat","oath"]
-Note:
-You may assume that all inputs are consist of lowercase letters a-z.
+ * Given a 2D board and a list of words from the dictionary, find all words in the board.
+ * Each word must be constructed from letters of sequentially adjacent cell, 
+ * where "adjacent" cells are those horizontally or vertically neighboring. 
+ * The same letter cell may not be used more than once in a word.
  *
- *Refer https://www.youtube.com/watch?v=5Ha1nJ5rjrE
+	Example:
+	Input: 
+	words = ["oath","pea","eat","rain"] and board =
+	[
+	  ['o','a','a','n'],
+	  ['e','t','a','e'],
+	  ['i','h','k','r'],
+	  ['i','f','l','v']
+	]
+	
+	Output: ["eat","oath"]
+ *
+ * Note:
+ * You may assume that all inputs are consist of lowercase letters a-z.
+ * For solution, refer https://www.youtube.com/watch?v=5Ha1nJ5rjrE
+ * 
  */
 
 public class WordSearch_2 {
@@ -91,7 +92,7 @@ public class WordSearch_2 {
 			res.add(node.word);
 			node.word=null;
 		}
-		board[row][col] ='#';
+		board[row][col] ='#'; // Mark as visited
 		dfs(board,row+1,col,node,res);
 		dfs(board,row-1,col,node,res);
 		dfs(board,row,col+1,node,res);
