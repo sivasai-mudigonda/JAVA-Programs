@@ -3,6 +3,8 @@
 */
 package leetcode;
 
+import java.math.BigInteger;
+
 /**
  * @author u230107 LeetCode - 8
  *         https://leetcode.com/problems/string-to-integer-atoi/
@@ -36,24 +38,24 @@ public class StringToInteger {
 			index++;
 		}
 
-		long result = 0;
+		BigInteger result = new BigInteger("0");
 		for (int i = index; i < str.length(); i++) {
 			char ch = str.charAt(i);
 			if (ch >= '0' && ch <= '9') {
-				result = result * 10 + (ch - '0');
+				result = result.multiply(BigInteger.valueOf(10)).add(BigInteger.valueOf(ch - '0'));
 			} else {
 				break;
 			}
 		}
 
 		if (isNeg) {
-			result = 0 - result;
+			result = BigInteger.valueOf(0).subtract(result); 
 		}
-		if (result >= Integer.MAX_VALUE) {
+		if (result.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) >=0 ){
 			return Integer.MAX_VALUE;
-		} else if (result <= Integer.MIN_VALUE) {
+		} else if (result.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) <=0) {
 			return Integer.MIN_VALUE;
 		}
-		return (int) result;
+		return result.intValue();
 	}
 }

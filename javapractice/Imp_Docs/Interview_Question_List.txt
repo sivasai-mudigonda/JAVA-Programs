@@ -20,12 +20,12 @@ MergeTwoSortedArrays
 Amazon:
 Virtal Keyboard Traversal
 
-SQUASH: {Unix Process}
--> Refer LeetCode Kill process problem
-
 Williams Sonoma:
 Garbage Collection:
 https://www.journaldev.com/2856/java-jvm-memory-model-memory-management-in-java#memory-management-in-java-8211-young-generation
+
+SQUASH: {Unix Process}
+-> Refer LeetCode Kill process problem
 
 private static void mapProccess(File f1){
   if(f1==null){
@@ -70,3 +70,7 @@ private static void mapProccess(File f1){
      }
   }
 }
+
+Google Interview PREP Videos:
+https://www.youtube.com/watch?v=XKu_SEDAykw
+https://www.youtube.com/watch?v=uQdy914JRKQ

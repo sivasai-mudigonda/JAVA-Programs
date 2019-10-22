@@ -1,18 +1,26 @@
-package arrays;
+package leetcode;
 
 import java.util.Arrays;
 
 /*
-* Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
-* column is set to 0.
 * 
-* sol:
+* LeetCode Ques - 73 {Set Matrix Zeroes}
+* https://leetcode.com/problems/set-matrix-zeroes/
+* 
+* Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place..
+* 
+* Solution:
 * 1) Scan the first row and set a variable rowFlag to indicate whether we need to set all 1s in first row or not.
 * 2) Scan the first column and set a variable colFlag to indicate whether we need to set all 1s in first column or not.
-* 3) Use first row and first column as the auxiliary arrays row[] and col[] respectively, consider the matrix as submatrix starting from second row and second column and apply method 1.
+* 3) Use first row and first column as the auxiliary arrays row[] and col[] respectively, consider the matrix as sub-matrix starting from second row and second column and apply method 1.
 * 4) Finally, using rowFlag and colFlag, update first row and first column if needed.
+* 
+* Time Complexity = O(M*N) - where M is rows and N is columns
+* Space Complexity =o(1) for Method-1
+* Space Complexity =o(N) for Method-2
+* 
 */
-public class MatrixSetZeros {
+public class SetMatrixZeros {
 
 	private static int ROWS = 3;
 	private static int COLUMS = 4;
@@ -42,8 +50,8 @@ public class MatrixSetZeros {
 					col_flag = true;
 				}
 				if (matrix[i][j] == 0) {
-					matrix[0][j] = 0;
 					matrix[i][0] = 0;
+					matrix[0][j] = 0;
 				}
 			}
 		}

@@ -1,8 +1,5 @@
-https://www.youtube.com/watch?v=XKu_SEDAykw
-https://www.youtube.com/watch?v=uQdy914JRKQ
-
-Parking Lot Design:
-https://www.youtube.com/watch?v=DSGsa0pu8-k
+Questions:
+https://www.educative.io/courses/grokking-the-system-design-interview
 
 Tiny URL=
 https://www.youtube.com/watch?v=fMZMm_0ZhK4
@@ -19,10 +16,7 @@ https://www.youtube.com/watch?v=DUbEgNw-F9c
 Uber Back-End System Design:
 https://medium.com/@narengowda/uber-system-design-8b2bc95e2cfe
 
+Instagram Design:
+https://medium.com/@mail.dpant/system-design-videos-6311b7ccdf1c
 
-What are you looking in the new position?
-Growth & Skills
-I’d love a position where I can use my skills to make an impact that I can see with my own eyes. 
-Work toward something I care about matters to me.
-Oppurtunity to contribute & learn. Good Team work/envirnment.
-This role really inspires me, and I’m really excited about this opportunity.
+
