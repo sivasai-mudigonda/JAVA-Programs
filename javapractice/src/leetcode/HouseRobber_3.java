@@ -46,10 +46,7 @@ public class HouseRobber_3 {
 		root.right = obj.new TreeNode(3);
 		root.left.right = obj.new TreeNode(3);
 		root.right.right = obj.new TreeNode(1);
-		System.out.println("Max amount that can be rob tonight without alerting the police = " + obj.rob(root)); // Expected
-																													// Output
-																													// =
-																													// 7
+		System.out.println("Max amount that can be rob tonight without alerting the police = " + obj.rob(root)); // Expected Output = 7
 
 		root = null;
 		root = obj.new TreeNode(3);
@@ -58,10 +55,7 @@ public class HouseRobber_3 {
 		root.left.left = obj.new TreeNode(1);
 		root.left.right = obj.new TreeNode(3);
 		root.right.right = obj.new TreeNode(1);
-		System.out.println("Max amount that can be rob tonight without alerting the police = " + obj.rob(root)); // Expected
-																													// Output
-																													// =
-																													// 9
+		System.out.println("Max amount that can be rob tonight without alerting the police = " + obj.rob(root)); // Expected Output = 9
 	}
 
 	/**
@@ -69,8 +63,8 @@ public class HouseRobber_3 {
 	 * @param root
 	 * @return
 	 *
-	 *         result[0] : Money with robbing the node result[1] : Money without
-	 *         robbing the node
+	 *         result[0] : Money with robbing the node 
+	 *         result[1] : Money without robbing the node
 	 *
 	 */
 	public int rob(TreeNode root) {
@@ -78,21 +72,21 @@ public class HouseRobber_3 {
 			return 0;
 		}
 		int[] result = robHelper(root);
-		return Math.max(result[0], result[1]);
+		return Math.max(result[0], result[1]); 
 	}
 
 	private int[] robHelper(TreeNode root) {
 		if (root == null) {
-			return new int[2];
+			return new int[2]; // To create left and right arrays
 		}
 		int[] left = robHelper(root.left);
 		int[] right = robHelper(root.right);
 
 		int[] curr = new int[2];
-// Rob with root node
+		// Rob with root node
 		curr[0] = root.val + left[1] + right[1]; // Array Index starts from zero. We will skip zero to avoid adj leafs
 
-// Rob without root node. This will address robbing cross diagonal leafs.
+		// Rob without root node. This will address robbing cross diagonal leafs.
 		curr[1] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
 		return curr;
 	}

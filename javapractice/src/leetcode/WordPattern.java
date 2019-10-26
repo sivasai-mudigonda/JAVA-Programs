@@ -40,40 +40,39 @@ public class WordPattern {
 
 		String pattern = "abba";
 		String str = "dog cat cat dog";
-		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output =
-																								// true
+		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output = true
 
 		pattern = "abba";
 		str = "dog cat cat fish";
-		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output =
-																								// false
+		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output = false
 
 		pattern = "aaaa";
 		str = "dog cat cat dog";
-		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output =
-																								// false
+		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output = false
 
 		pattern = "abba";
 		str = "dog dog dog dog";
-		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output =
-																								// false
+		System.out.println("Does str follows same pattern = " + obj.wordPattern(pattern, str)); // Expected Output = false
 	}
 
 	public boolean wordPattern(String pattern, String str) {
 		if (pattern == null || pattern.length() == 0) {
 			return false;
 		}
-		String[] strArr = str.split("\\s");
+		String[] strArr = str.split("\\s"); // Split str by space
+		if(strArr.length!=pattern.length() ){
+			return false; // Num of chars in pattern should match no of words in str
+		}
 		Map<Character, String> map = new HashMap<>();
 		for (int i = 0; i < pattern.length(); i++) {
 			char c = pattern.charAt(i);
 			if (map.containsKey(c)) {
 				String s = map.get(c);
 				if (!s.equals(strArr[i])) {
-					return false;
+					return false; // Key (character in pattern) is present and its value{word in str} is not current word in the map
 				}
 			} else if (map.containsValue(strArr[i])) {
-				return false;
+				return false; // Value{Word in str} is mapped with some other key{character in pattern} in the map
 			}
 			map.put(c, strArr[i]);
 		}

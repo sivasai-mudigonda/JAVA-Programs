@@ -29,8 +29,7 @@ import java.util.Set;
  *         letters.
  *
  *         Time Complexity = O(N) - To loop through pattern and word Space
- *         Complexity = O(N) - Space required to store pattern and string{As
- *         well as substrings} in map and set
+ *         Complexity = O(N) - Space required to store pattern and string{As well as substrings} in map and set
  *
  */
 public class WordPattern_2 {
@@ -76,7 +75,7 @@ public class WordPattern_2 {
 	 */
 	private boolean wordPatternHelper(int i, int j, String str, String pattern, Map<Character, String> map,
 			Set<String> set) {
-// i==pattern.length() && j==str.length(), equals comparison is because we are doing i+ and j+1{k} in the loop
+		// i==pattern.length() && j==str.length(), equals comparison is because we are doing i+ and j+1{k} in the loop
 		if (i == pattern.length() && j == str.length()) {
 			return true;
 		}
@@ -84,24 +83,23 @@ public class WordPattern_2 {
 			return false;
 		}
 		char c = pattern.charAt(i);
-// k<=str.length(), Equals is because k character will be excluded in substring(j,k)
+		// k<=str.length(), Equals is because k character will be excluded in substring(j,k)
 		for (int k = j + 1; k <= str.length(); k++) {
 			String subStr = str.substring(j, k);
 			if (!map.containsKey(c) && !set.contains(subStr)) {
-// If map does not contain character
-// and set does not contain sub string, add them
+				// If map does not contain character and set does not contain sub string, add them
 				map.put(c, subStr);
 				set.add(subStr);
-// check if pattern matches for next character and next letter(j+1) in substring
+				// check if pattern matches for next character and next letter(j+1) in substring
 				if (wordPatternHelper(i + 1, k, str, pattern, map, set)) {
 					return true;
 				}
-// Back track
+				// Back track
 				map.remove(c);
 				set.remove(subStr);
 			} else if (map.containsKey(c) && map.get(c).equals(subStr)) {
-// check if we reached end of string,
-// else repeat checking if pattern matches for next character and next letter(j+1) in substring
+				// check if we reached end of string,
+				// else repeat checking if pattern matches for next character and next letter(j+1) in substring
 				if (wordPatternHelper(i + 1, k, str, pattern, map, set)) {
 					return true;
 				}

@@ -31,8 +31,8 @@ import java.util.Map;
  * For Solution, refer
  * https://medium.com/leetcode-%E6%BC%94%E7%AE%97%E6%B3%95%E6%95%99%E5%AD%B8/017-leetcode-249%E6%BC%94%E7%AE%97%E6%B3%95-group-shifted-strings-%E7%BE%A4%E7%B5%84%E5%81%8F%E7%A7%BB%E5%AD%97%E4%B8%B2-c8fa3aeb5548
  * 
- * Time Complexity : O()
- * Space Complexity : o()
+ * Time Complexity : O(N) - To iterate through strings array
+ * Space Complexity : o(N) - To store key{offset} and value{group of strings with same offset}
  * 
  */
 public class GroupShiftedStrings {

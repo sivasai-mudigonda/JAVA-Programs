@@ -13,12 +13,18 @@ import java.util.Map;
  * @author u230107
  *
  *         Leet Code - 49 {Group Anagrams}
+ *         https://leetcode.com/problems/group-anagrams/
  *
  *         Given an array of strings, group anagrams together. Example: Input:
  *         ["eat", "tea", "tan", "ate", "nat", "bat"], Output: [
  *         ["ate","eat","tea"], ["nat","tan"], ["bat"] ]
+ *         
+ *         Note:
+ *         All inputs will be in lowercase.
+ *         The order of your output does not matter.
  *
- *
+ *         Time Complexity : O(NLogN) - As we are applying sort
+ *         Space Complexity : o(N) - To store key{Sorted chars of strs[i]} and value{grouped anagrams with same key} in Map
  */
 public class GroupAnagrams {
 
