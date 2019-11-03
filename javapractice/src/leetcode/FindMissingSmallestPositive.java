@@ -83,6 +83,14 @@ public class FindMissingSmallestPositive {
 		return i+1;
 	}
 	
+	/**
+	 * 
+	 * @param nums
+	 * @param i
+	 * @param j
+	 * 
+	 * Swap logic
+	 */
 	private static void swap(int[] nums, int i, int j) {
 		int temp = nums[i];
 		nums[i] = nums[j];
