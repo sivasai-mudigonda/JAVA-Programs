@@ -1,0 +1,20 @@
+/*
+A Beautiful String is one that is defined as having two (or more) consecutive characters.
+"FUZZY", "FOOTBALL", "BALLET" are all considered to be beautiful strings.
+Your job is to try to make all Strings beautiful by removing characters.
+You also want to change the original String as little as possible.
+
+Write a method that takes any String and returns the minimum number of character you have to
+remove in order to make it beautiful. Return -1 if its not possible.
+
+Exam==>ples:
+"AA"
+returns 0. Its beautiful just the way it is.
+
+"ABA"
+returns 1. You need to remove the B
+
+"ABCDABA" ==> ABCDABA =>1
+
+"ABCDBA" ==> ABBA ==> 2
+*/
