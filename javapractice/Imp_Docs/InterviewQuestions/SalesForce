@@ -1,0 +1,133 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+/*
+ * Complete the function below.
+ */
+
+    static void doIt(String[] input) {
+        if(input==null || input.length==0 ){
+            System.out.println("End");
+        }
+        Map<String,List<String>> dependencyMap = new HashMap<>();
+        Map<String,Boolean> installMap = new LinkedHashMap<>();
+        String[] command=null;
+        for(int i=0;i<=input.length;i++){
+           command = input[i].split("\\s");
+           System.out.println(Arrays.toString(command));
+           if(command!=null && command.length!=0){
+               if(command[0].equals("DEPEND") ){
+                   for(int j=2;j<command.length;j++){
+                     if(dependencyMap.containsKey(command[j]) 
+                            && dependencyMap.get(command[j]).contains(command[1]) ){
+                             // NETCARD is a dependency of TCPIP-DEADLOCK
+                        System.out.println(command[j]+" depends on "+command[1]+", ignoring command");
+                        break;
+                     }
+                     List<String> depLi = null;
+                     if(dependencyMap.containsKey(command[1]) ){
+                         depLi = dependencyMap.get(command[1]);
+                     } else{
+                         depLi = new LinkedList<>();
+                     }
+                     depLi.add(command[j]);
+                     dependencyMap.put(command[1],depLi);
+                     if(!installMap.containsKey(command[j]) ){
+                        installMap.put(command[j],Boolean.FALSE); 
+                     }
+                   }
+                   if(!installMap.containsKey(command[1]) ){
+                        installMap.put(command[1],Boolean.FALSE); 
+                    }
+               } else if(command[0].equals("INSTALL") ){
+                   if(installMap.containsKey(command[1]) 
+                            && installMap.get(command[1]).equals(Boolean.TRUE)  ){
+                       System.out.println(command[1] +" is already installed");
+                   } else{
+                        List<String> depLi = dependencyMap.get(command[1]);
+                        if(depLi!=null && !depLi.isEmpty() ){
+                            for(String dependency : depLi ){
+                                if(installMap.containsKey(dependency) &&
+                                    installMap.get(dependency).equals(Boolean.FALSE) ){
+                                    System.out.println("Installing " +dependency);
+                                    installMap.put(dependency,Boolean.TRUE);    
+                                }
+                            }
+                        }
+                        System.out.println("Installing " +command[1]);
+                        installMap.put(command[1],Boolean.TRUE);
+                   }
+               } else if(command[0].equals("REMOVE") ){
+                   if(installMap.containsKey(command[1]) 
+                            &&installMap.get(command[1]).equals(Boolean.TRUE) ){
+                        boolean flag = false;        
+                        for(List<String> li : dependencyMap.values()){
+                            if(li.contains(command[1]) ){
+                                System.out.println(command[1] +" is still needed");
+                                flag = true;
+                                break;
+                            }
+                        }
+                        if(!flag ){
+                            List<String> depLi = dependencyMap.get(command[1]);
+                            if(depLi!=null && !depLi.isEmpty() ){        
+                                for(String dependency : depLi ){
+                                    boolean doNotRemove = false;
+                                   for(Map.Entry<String,List<String>> entry : dependencyMap.entrySet())                                    {
+                                    List li = entry.getValue(); 
+                                    if(!entry.getKey().equals(command[1]) && li.contains(dependency) ){
+                                            doNotRemove = true;
+                                            break;
+                                        }
+                                    }
+                                    if(!doNotRemove ){
+                                        System.out.println("Removing "+dependency);
+                                        installMap.remove(dependency);
+                                    }
+                                }
+                            }
+                            System.out.println("Removing "+command[1]);
+                            installMap.remove(command[1]);
+                            dependencyMap.remove(command[1]);
+                        }
+                   } else{
+                       System.out.println(command[1]+" is not installed");
+                   }
+               } else if(command[0].equals("LIST") ){
+                   for( Map.Entry<String,Boolean> entry : installMap.entrySet() ){
+                       if(entry.getValue().equals(Boolean.TRUE) ){
+                           System.out.println(entry.getKey());
+                       }
+                   }
+               } else if(command[0].equals("END") ){
+                   return;
+               }
+           }
+        }
+    }
+    
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        
+        int _input_size = 0;
+        _input_size = Integer.parseInt(in.nextLine().trim());
+        String[] _input = new String[_input_size];
+        String _input_item;
+        for(int _input_i = 0; _input_i < _input_size; _input_i++) {
+            try {
+                _input_item = in.nextLine();
+            } catch (Exception e) {
+                _input_item = null;
+            }
+            _input[_input_i] = _input_item;
+        }
+        
+        doIt(_input);
+        
+    }
+}

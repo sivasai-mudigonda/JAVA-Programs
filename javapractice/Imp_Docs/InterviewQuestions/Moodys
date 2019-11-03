@@ -1,0 +1,156 @@
+//Is HashMap thread-safe? Which type of map should be used in concurrent programming?
+  
+//what's the different of ArrayList and LinkedList?
+  
+//What's the different of Shallow copy and deep copy? How to do a deep copy?
+
+  
+/*  Implement a producer-consumer program to process the tasks.
+ *    Please fill in the TODOs in the code below
+ */
+
+class Task {
+    // ... members ...
+    public void process() { /*...*/ }
+}
+
+
+
+class ProducerConsumer {
+    
+    // TODO: define the members to buffer the task
+    //  ???
+    LinkedList<Task> list = new LinkedList<>();
+    int capacity =2;
+    
+    public void startProvider() {
+        // TODO: start a thread to continuously produce tasks
+        // ???
+        while(true){
+            Task task = new Task();
+            synchronized(this){
+               while(list.size()==capacity){
+                 wait();
+               }
+              list.add(task);
+              notify();
+              Thread.sleep(1000);
+            }
+        }
+    }
+    
+    private Task produceTask() {
+        return new Task();
+    }
+    
+    public void startConsumer() {
+        // TODO: start a thread to continuously consume tasks
+        // ???
+        while(true){
+          synchronized(this){
+               while(list.size()==0){
+                 wait();
+               }
+               Task task = list.removeFirst();
+               consumeTask(task);
+               notify();
+               Thread.sleep(1000);
+          }
+        }
+    }
+    
+    private void consumeTask(Task t) {
+        t.process();
+    }
+    
+    
+    public static void main(String[] args) {
+       final ProducerConsumer pc = new ProducerConsumer();
+        Thread t1 = new Thread(new Runnabble(){
+          public void run(){
+            try{
+               pc.startProvider();      
+            } catch(Exception e){
+               e.printStackTrace();
+            }
+          }
+        });
+       Thread t2 = new Thread(new Runnabble(){
+          public void run(){
+            try{
+               pc.startConsumer();      
+            } catch(Exception e){
+               e.printStackTrace();
+            }
+          }
+        });
+       t1.start();
+       t2.start();
+       
+       t1.join();
+      t2.join();
+      
+    }
+}
+
+
+--
+--  Assuming we have two tables:
+--  T1 (ID  number, Name varchar)
+--  T2 (PARENT_ID  number, CHILD_ID  number)
+--
+--  T1 Stores the elements
+--  T2 stores the parent-children relationship of the elements.
+--
+--  Q: Write a query to return all the roots
+--
+--  Eg.
+--           T1            |               T2
+--     ID        Name      |      PARENT_ID         CHILD_ID
+--      1         A        |          1                 2
+--      2         B        |          1                 3
+--      3         C        |          3                 4
+--      4         D        |          5                 6
+--      5         E        |
+--      6         F        |
+--      7         G        |
+--
+--   A
+--   \ --- B
+--   \ --- C
+--         \ --- D
+--   E
+--   \ --- F
+--   
+--   G
+--
+--  The query should return:
+--     ID      Name
+--      1       A
+--      5       E
+--      7       G
+--
+select T1.ID FROM T1 WHERE NOT EXISTS(SELECT * FROM T2 WHERE T1.ID = T2.CHILD_ID);
+
+
+-- Advanced question:  (Open question)
+-- How to detect the loop (circular relationship) in the dataset?
+-- E.g.
+--
+--       T1                |     T2
+--     ID        Name      |      PARENT_ID         CHILD_ID
+--      1         A        |          1                 2
+--      2         B        |          2                 1
+--      3         C        |          3                 4
+--      4         D        |          4                 5
+--      5         E        |          5                 3
+--      6         F        |
+--      7         G        |
+--
+--
+-- Circular relations:
+--    A -> B -> A
+--    C -> D -> E -> C
+
+-- Please illustrate your solution
+--back edge
