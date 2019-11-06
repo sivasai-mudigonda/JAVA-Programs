@@ -1,0 +1,114 @@
+// We have some clickstream data that we gathered on our client's website. Using cookies, we collected snippets of users' anonymized URL histories while they browsed the site. The histories are in chronological order and no URL was visited more than once per person.
+
+// Write a function that takes two users' browsing histories as input and returns the longest contiguous sequence of URLs that appears in both.
+
+// Sample input:
+
+// user0 = ["/start", "/pink", "/register", "/orange", "/red", "a"]
+// user1 = ["/start", "/green", "/blue", "/pink", "/register", "/orange", "/one/two"]
+// user2 = ["a", "/one", "/two"]
+// user3 = ["/red", "/orange", "/yellow", "/green", "/blue", "/purple", "/white", "/amber", "/HotRodPink", "/BritishRacingGreen"]
+// user4 = ["/red", "/orange", "/amber", "/random", "/green", "/blue", "/purple", "/white", "/lavender", "/HotRodPink", "/BritishRacingGreen"]
+// user5 = ["a"]
+
+// Sample output:
+
+// findContiguousHistory(user0, user1)
+//    /pink
+//    /register
+//    /orange
+
+// startIndex
+// EndIndex
+// counter
+// globalCounter
+// i, j
+
+// findContiguousHistory(user1, user2)
+//    (empty)
+
+// findContiguousHistory(user2, user0)
+//    a 
+
+// findContiguousHistory(user5, user2)
+//    a 
+
+// findContiguousHistory(user3, user4)
+//    /green
+//    /blue
+//    /purple
+//    /white
+
+// findContiguousHistory(user4, user3)
+//    /green
+//    /blue
+//    /purple
+//    /white
+
+// n: length of the first user's browsing history
+// m: length of the second user's browsing history
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+  public static void main(String[] argv) {
+    String[] user0 = {"/start", "/pink", "/register", "/orange", "/red", "a"};
+    String[] user1 = {"/start", "/green", "/blue", "/pink", "/register", "/orange", "/one/two"};
+    String[] user2 = {"a", "/one", "/two"};
+    String[] user3 = {"/red", "/orange", "/yellow", "/green", "/blue", "/purple", "/white", "/amber", "/HotRodPink", "/BritishRacingGreen"};
+    String[] user4 = {"/red", "/orange", "/amber", "/random", "/green", "/blue", "/purple", "/white", "/lavender", "/HotRodPink", "/BritishRacingGreen"};
+    String[] user5 = {"a"};
+    
+    List<String> res = findContiguousHistory(user4,user3);
+    System.out.println(res);
+
+  }
+  
+  static List<String> findContiguousHistory(String[] user1, String[] user2){
+    int startIndex=0;
+    int endIndex=0;
+    int counter =0;
+    int globalCounter=0;
+    int globalStart=0, globalEnd=0;
+    boolean isThrMatch=false;
+    List<String> result = new LinkedList<>();
+    for(int i=0;i<user1.length;i++ ){
+      for(int j=0;j<user2.length;j++){
+         // System.out.println(user1[i]);
+         // System.out.println(user2[j]);
+         if(i<user1.length && user1[i].equals(user2[j]) ){
+              //System.out.println("Inside Equals block");
+              counter++;
+              if(counter==1){
+                  startIndex = i;
+              }
+              i++;
+              endIndex = startIndex+counter-1;
+         } else{
+            if(counter>0){
+              counter =0;
+              startIndex=0;
+              endIndex=0;
+            }
+         }
+       // System.out.println(startIndex);
+        //System.out.println(endIndex);
+       // System.out.println(counter);
+        
+        if(counter > globalCounter ){
+           globalCounter = counter;
+           globalStart = startIndex;
+           globalEnd = endIndex;
+           isThrMatch=true;
+        }
+      }
+    }
+    while(isThrMatch && globalStart <= globalEnd){
+          result.add(user1[globalStart]);
+          globalStart++;
+    }
+    return result;
+  }
+}
