@@ -1,0 +1,85 @@
+What is the slowest key pressed?{Which took max time diff}
+
+Eg:
+Input : { {0,2}, {4,5} }
+0 and 4 represents   alphabhets that are pressed. {0 to 25 alphabhets}
+To press 0{alphabet a}, it took 2 seconds
+To press 4{alphabet e}, It was pressed in 5th second. It took 3 seconds {5-2} to press expected
+
+Output:
+e {Slowest char press}
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+class Result {
+
+    /*
+     * Complete the 'slowestKey' function below.
+     *
+     * The function is expected to return a CHARACTER.
+     * The function accepts 2D_INTEGER_ARRAY keyTimes as parameter.
+     */
+
+    public static char slowestKey(List<List<Integer>> keyTimes) {
+        if(keyTimes==null || keyTimes.isEmpty() ){
+            return ' ';
+        }
+        Map<Integer,Character> decodeMap = charMap();
+        char slowestChar=decodeMap.get(keyTimes.get(0).get(0));
+        int maxTimeDiff=keyTimes.get(0).get(1);
+        int totalEntries=keyTimes.size();
+        for(int i=1;i<totalEntries;i++){
+            int timeDiff = keyTimes.get(i).get(1) - keyTimes.get(i-1).get(1);
+            if(timeDiff > maxTimeDiff ){
+                slowestChar = decodeMap.get(keyTimes.get(i).get(0));
+                maxTimeDiff = timeDiff;
+            }
+        }
+        return slowestChar;
+    }
+
+    public static Map<Integer,Character> charMap(){
+        Map<Integer,Character> map = new HashMap<>();
+        map.put(0, 'a');
+        map.put(1, 'b');
+        map.put(2, 'c');
+        map.put(3, 'd');
+        map.put(4, 'e');
+        map.put(5, 'f');
+        map.put(6, 'g');
+        map.put(7, 'h');
+        map.put(8, 'i');
+        map.put(9, 'j');
+        map.put(10, 'k');
+        map.put(11, 'l');
+        map.put(12, 'm');
+        map.put(13, 'n');
+        map.put(14, 'o');
+        map.put(15, 'p');
+        map.put(16, 'q');
+        map.put(17, 'r');
+        map.put(18, 's');
+        map.put(19, 't');
+        map.put(20, 'u');
+        map.put(21, 'v');
+        map.put(22, 'w');
+        map.put(23, 'x');
+        map.put(24, 'y');
+        map.put(25, 'z');
+        return map;
+    }
+
+}
+public class Solution {

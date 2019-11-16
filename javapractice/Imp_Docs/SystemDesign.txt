@@ -19,4 +19,10 @@ https://medium.com/@narengowda/uber-system-design-8b2bc95e2cfe
 Instagram Design:
 https://medium.com/@mail.dpant/system-design-videos-6311b7ccdf1c
 
+Monolithic  vs Micro Service
+https://www.youtube.com/watch?v=qYhRvH9tJKw
+
+Vertical vs Horizontal scaling
+https://www.youtube.com/watch?v=xpDnVSmNFX0
+
 
