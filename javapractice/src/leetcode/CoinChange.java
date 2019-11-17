@@ -3,67 +3,84 @@ package leetcode;
 import java.util.Arrays;
 
 /**
- * @author u230107
+ * 
+ * @author SivaM
  *
- *         Find minimum number of coins that make a given value? Given a value
- *         V, if we want to make change for V cents, and we have infinite supply
- *         of each of C = { C1, C2, .. , Cm} valued coins, what is the minimum
- *         number of coins to make the change?
+ * LeetCode Ques - 322 {Coin Change} -Medium
+ * https://leetcode.com/problems/coin-change/
  * 
+ * You are given coins of different denominations and a total amount of money amount. 
+ * Write a function to compute the fewest number of coins that you need to make up that amount. 
+ * If that amount of money cannot be made up by any combination of the coins, return -1.
  * 
- *         Refer "https://www.youtube.com/watch?v=jgiZlGzXMBw"
+	Example 1:
+	Input: coins = [1, 2, 5], amount = 11
+	Output: 3 
+	Explanation: 11 = 5 + 5 + 1
+	
+	Example 2:
+	Input: coins = [2], amount = 3
+	Output: -1
+ * 
+ * Note:
+ * You may assume that you have an infinite number of each kind of coin.
+ * 
+ * Solution:
+ * We may think if we take the largest coin every time, 
+ * we may need fewest coins, but actually it is not, 
+ * because there is possibility that the coins can’t form the amount. 
+ * We need to use dynamic programming here, 
+ * we generate an array{dp} with the length of the amount we need. 
+ * Search through all coin value to see if we have reached at any amount before,
+ * so we can add{+1} just another coin to get current amount.
+ * The number in the array means the minimum amount of coins needed to reach current amount. 
+ * So we can just return the last element in the array.
+ * 
+ * The concept of this problem is like Knapsack problem which can be solved by using dynamic programming approach.
+ * dp[i] = min(dp[i-coin] + 1), for all coin in coins
+ * 
+ * Time Complexity = O(M*N) where M denotes to amount and n denotes to counts of coins.
+ * Space Complexity = o(M) where m denotes space required to store dp[amount]
+ * 
  */
 public class CoinChange {
-	// Dynamic Programming
-	private static int minCoins(int arr[], int length, int target) {
-		if (arr == null || target == 0 || length == 0) {
-			return 0;
+	
+		public static void main(String args[]) {
+			CoinChange obj = new CoinChange();
+			
+			int coins1[] = {1,2,5};
+			int amount = 11;
+			System.out.println("fewest number of coins required make up amount = " +obj.coinChange(coins1, amount)); // Expected Output = 11
+			
+			int coins2[] = {2};
+			amount = 3;
+			System.out.println("fewest number of coins required make up amount = " +obj.coinChange(coins2, amount)); // Expected Output = -1
 		}
-		int[] table = new int[target + 1]; // Considering sum as zero, so +1
-		Arrays.fill(table, Integer.MAX_VALUE);
-		table[0] = 0; // For sum zero, no coins required.
-
-		for (int i = 1; i <= target; i++) {
-			for (int j = 0; j < arr.length; j++) {
-				if (i >= arr[j]) { // coin is greater than target
-					int sub_result = table[i - arr[j]];
-					if (sub_result != Integer.MAX_VALUE && sub_result + 1 < table[i]) {
-						table[i] = sub_result + 1;
-					}
-				}
-			}
-		}
-		return table[target];
-	}
-
-	// Recursive Programming.
-	/*
-	 * The time complexity of above solution is exponential. If we draw the complete
-	 * recursion tree, we can observer that many subproblems are solved again and
-	 * again. Therefore it is inefficient.
+	
+	/** 
+	 * 
+	 * @param coins
+	 * @param amount
+	 * @return
+	 * 
+	 * Dynamic Programming{Solve sub-problem}+KnapSack Approach
+	 * 
 	 */
-	static int minCoinsRecurssive(int arr[], int length, int target) {
-		if (target == 0) {
-			return 0;
-		}
-		int result = Integer.MAX_VALUE;
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] <= target) {
-				int sub_result = minCoinsRecurssive(arr, length, target - arr[i]);
-				if (sub_result != Integer.MAX_VALUE && sub_result + 1 < result) {
-					result = sub_result + 1;
-				}
-			}
-		}
-		return result;
-	}
-
-	// Driver Function to test above function
-	public static void main(String args[]) {
-		int arr[] = { 1, 2, 3 };
-		int m = arr.length;
-		int n = 4;
-		System.out.println(minCoins(arr, m, n));
-		System.out.println(minCoinsRecurssive(arr, m, n));
-	}
+	 public int coinChange(int[] coins, int amount) {
+		 if(coins==null || coins.length==0 || amount==0) {
+			 return 0;
+		 }
+		 int[] dp = new int[amount+1];
+		 Arrays.fill(dp, amount+1);
+		 dp[0] =0;
+		 for(int coin : coins) {
+			 for(int i= coin; i<=amount;i++) {
+				 dp[i] = Math.min(dp[i], dp[i-coin]+1);
+			 }
+		 }
+		 if(dp[amount]>amount) {
+			 return -1;
+		 }
+	     return dp[amount];   
+	 }
 }
