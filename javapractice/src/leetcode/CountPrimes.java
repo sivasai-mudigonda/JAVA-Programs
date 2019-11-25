@@ -22,7 +22,7 @@ package leetcode;
  * We start with a number, if it is prime, then we mark all its multiples. 
  * We do this iteratively.
  * A little optimization would be to only check till the square root of ‘n’, 
- * as the numbers greater than this will have multiples greater than ‘n’
+ * covering up to square root of n is sufficient to to tell all Prime numbers.
  * 
  * Refer example in below link {Sieve_of_Eratosthenes}
  * https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes

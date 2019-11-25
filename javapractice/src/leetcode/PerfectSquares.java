@@ -74,7 +74,7 @@ public class PerfectSquares {
 		dp[2] = 2;
 		dp[3] = 3;
 		for (int i = 4; i <= n; i++) {
-			for (int j = 1; j <= Math.sqrt(n); j++) { // n cannot have factors more than sqrt(n)
+			for (int j = 1; j <= Math.sqrt(n); j++) { // n cannot have perfect squares more than sqrt(n)
 				if (i == j * j) {
 					dp[i] = 1; // eg: i=4 and j=2, 2*2 =4, one perfect number is sufficient
 				} else if (i > j * j) {
