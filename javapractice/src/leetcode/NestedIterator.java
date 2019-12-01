@@ -54,7 +54,7 @@ public class NestedIterator implements Iterator<Integer> {
 		nestedList.add(new NestedIntegerImpl(subLi));
 	    
 		NestedIterator obj = new NestedIterator(nestedList);
-	    obj.print(obj);
+	    obj.print(obj); // Expected Output = [1,1,2,1,1] 
 	    
 	    System.out.println("*************************************");
 	    
@@ -71,7 +71,7 @@ public class NestedIterator implements Iterator<Integer> {
 		nestedList.add(new NestedIntegerImpl(subLi));
 		
 		obj = new NestedIterator(nestedList);
-	    obj.print(obj);
+	    obj.print(obj); // Expected Output = [1,4,6]
 	}
 	
 	void print(NestedIterator it) {
