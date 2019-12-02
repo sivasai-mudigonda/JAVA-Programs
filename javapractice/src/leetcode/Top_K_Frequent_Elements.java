@@ -48,7 +48,7 @@ import java.util.PriorityQueue;
  * 
  * Method-2:
  * 1.> Use map/dictionary and store the frequency of the number 
- * 2.> Use Priority-Queue{Max Heap by using comparator} and store k elements only.
+ * 2.> Use Priority-Queue{Min Heap + comparator to sort keys based on frequencies} and store k elements only.
  * 3.> Convert PriorityQueue to List{Reverse the list} and return list.
  * 
  * Complexities:
@@ -143,8 +143,8 @@ public class Top_K_Frequent_Elements {
 	 * @return
 	 * 
 	 * Method-2:
-	 * Priority Queue- MaxHeap{Sorts from High to Low}
-	 * queue.peek() will give higher values first
+	 * Priority Queue- MinHeap{Sorts from Low to High}
+	 * queue.peek() will give values from front
 	 * 
 	 */
 	public List<Integer> topKFrequent_PriorityQueue(int[] nums, int k) {
@@ -161,16 +161,16 @@ public class Top_K_Frequent_Elements {
         });
         
         // Step -2 
-        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k,(m,n)->map.get(m)-map.get(n));
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(k,(m,n)->map.get(m)-map.get(n));
         map.keySet().forEach(key->{
-        	maxHeap.offer(key);
-        	if(maxHeap.size()>k ){
-        		maxHeap.poll();
+        	minHeap.offer(key);
+        	if(minHeap.size()>k ){
+        		minHeap.poll();
         	}
         });
         
         // Step-3
-        List<Integer> resultLi = new LinkedList<>(maxHeap);
+        List<Integer> resultLi = new LinkedList<>(minHeap);
         Collections.reverse(resultLi);
         return resultLi;
 	}

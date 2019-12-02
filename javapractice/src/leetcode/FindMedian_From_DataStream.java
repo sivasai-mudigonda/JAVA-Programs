@@ -35,7 +35,7 @@ For example,
 * Solution:
 * The main idea of this solution is to use a maximum heap and another minimum heap,
 * which store half of the numbers, so the theoretical median is the top element of the two heaps
-* (maximum heap top The element is the maximum value, and the minimum is the opposite),
+* (maximum heap top of the element is the maximum value, and the minimum is the opposite),
 * so just pay attention to the number of the two heaps to be similar,
 * and then pay attention to the odd and even numbers can be solved smoothly.
 *
