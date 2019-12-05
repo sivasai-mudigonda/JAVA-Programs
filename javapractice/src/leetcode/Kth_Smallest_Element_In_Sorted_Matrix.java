@@ -60,11 +60,11 @@ public class Kth_Smallest_Element_In_Sorted_Matrix {
 	 * Using Binary Search
 	 * 
 	 * 
-		// low = 1 , high = 15, mid = 8,   <= 8,  2
-		// low = 9， high = 15, mid = 12   <=12   6
+		// low = 1 , high = 15, mid = 8,   <= 8,  2{count}
+		// low = 9， high = 15, mid = 12   <=12   6{count}
 		    
-		// low = 13, high 15, mid = 14,    <= 14, 8
-		// low =13, high = 13, mid = 13,   <= 13, 8
+		// low = 13, high 15, mid = 14,    <= 14, 8{count}
+		// low =13, high = 13, mid = 13,   <= 13, 8{count}
 		// low = 13, high = 12 -> return 13.
 	 * 
 	 */
