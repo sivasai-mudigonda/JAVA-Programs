@@ -30,6 +30,10 @@ import java.util.Map;
  *   Method-2:
  *   Time Complexity : O(K*NLogN) - As we are applying sort for k number of words
  *   Space Complexity : O(N*K), Store elements in result List.
+ *   
+ *   Companies:
+ *   Oracle
+ *   
  */
 public class GroupAnagrams {
 
