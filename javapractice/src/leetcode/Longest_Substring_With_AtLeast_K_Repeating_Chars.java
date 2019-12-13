@@ -78,7 +78,7 @@ public class Longest_Substring_With_AtLeast_K_Repeating_Chars {
 	 */
 	public int longestSubstring(String s, int k) {
 		if (s == null || s.length() == 0 || s.length() < k || k <= 0) {
-			return 0;
+			return 0; /* stop searching if substring is already too short */
 		} else if (k == 1) {
 			return s.length();
 		}
@@ -124,17 +124,17 @@ public class Longest_Substring_With_AtLeast_K_Repeating_Chars {
 		int maxLength = 0;
 		// otherwise we use all the infrequent elements as splits
 		while (right < s.length()) {
-			if (charsSet[s.charAt(right) - 'a'] < k) {
+			if (charsSet[s.charAt(right) - 'a'] < k && charsSet[s.charAt(right) - 'a'] > 0 ){ /* we land at index == i where this letter is INVALID, then we need divide and conquer*/
 				// substring- Excludes right character. So, bounds will be left to right-1.
 				// Split the string and recurse over the left part from start till current
 				// and keep the maximum count
-				maxLength = Integer.max(maxLength, longestSubstring(s.substring(left, right), k));
-				left = right + 1;
+				maxLength = Integer.max(maxLength, longestSubstring(s.substring(left, right), k)); /* chopped part */
+				left = right + 1; /* later part, basically this loop ensures that the string is CHOPPED into multiple pieces with INVALID letters EXCLUDED */
 			}
 			right++; // keep incrementing the right pointer.
 		}
 		// 5.> Check for last leftover window from left to end of the String.
-		maxLength = Integer.max(maxLength, longestSubstring(s.substring(left), k));
+		maxLength = Integer.max(maxLength, longestSubstring(s.substring(left), k)); /* we still have the last part not searched yet */
 		return maxLength;
 	}
 }
