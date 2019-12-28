@@ -12,22 +12,22 @@ import java.util.List;
 /**
  * @author SIVA SAI
  *
+ *  Given a collection of intervals, merge all overlapping intervals.
+ *  
+    Example 1:
+    Input: [[1,3],[2,6],[8,10],[15,18]]
+    Output: [[1,6],[8,10],[15,18]]
+    Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+    
+    Example 2:
+    Input: [[1,4],[4,5]] 
+    Output: [[1,5]] 
+    Explanation: Intervals [1,4] and [4,5] are considered overlapping.
  *
- *         Given a collection of intervals, merge all overlapping intervals.
- * 
- *         Example 1:
- * 
- *         Input: [[1,3],[2,6],[8,10],[15,18]] Output: [[1,6],[8,10],[15,18]]
- *         Explanation: Since intervals [1,3] and [2,6] overlaps, merge them
- *         into [1,6]. Example 2:
- * 
- *         Input: [[1,4],[4,5]] Output: [[1,5]] Explanation: Intervals [1,4] and
- *         [4,5] are considered overlapping.
+ *  Refer https://www.youtube.com/watch?v=OIqAVmD1RGk
  *
- *
- *         Refer https://www.youtube.com/watch?v=OIqAVmD1RGk
- *
- *         Time Complexity = O(NLOGN) Space Complexity = o(1)
+ *  Time Complexity = O(NLOGN) 
+ *  Space Complexity = o(1)
  */
 public class MergeIntervals {
 
@@ -100,21 +100,21 @@ public class MergeIntervals {
 			return resultLi;
 		}
 		Collections.sort(intervals, new IntervalComparator()); // O(NLogN), SORT
-		int preStart = intervals.get(0).start;
-		int preEnd = intervals.get(0).end;
+		int prevStart = intervals.get(0).start;
+		int prevEnd = intervals.get(0).end;
 		for (int i = 1; i < intervals.size(); i++) {
 			int currStart = intervals.get(i).start;
 			int currEnd = intervals.get(i).end;
-			if (currStart > preEnd) { // No overlapping
-				resultLi.add(new Interval(preStart, preEnd)); // Add previous Interval
-				preStart = currStart;
-				preEnd = currEnd;
+			if (currStart > prevEnd) { // No overlapping
+				resultLi.add(new Interval(prevStart, prevEnd)); // Add previous Interval
+				prevStart = currStart;
+				prevEnd = currEnd;
 			} else {
 				// Overlap
-				preEnd = Math.max(preEnd, currEnd); // Identify Bigger Boundary
+				prevEnd = Math.max(prevEnd, currEnd); // Identify Bigger Boundary
 			}
 		}
-		resultLi.add(new Interval(preStart, preEnd)); // To add last Interval
+		resultLi.add(new Interval(prevStart, prevEnd)); // To add last Interval
 		return resultLi;
 	}
 
