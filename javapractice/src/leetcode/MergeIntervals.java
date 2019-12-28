@@ -66,7 +66,7 @@ public class MergeIntervals {
 				return i1[0] - i2[0];
 			}
 		});
-		List<int[]> res = new ArrayList<>();
+		List<int[]> resultLi = new ArrayList<>();
 		int preStart = intervals[0][0];
 		int preEnd = intervals[0][1];
 		for (int i = 1; i < intervals.length; i++) {
@@ -74,7 +74,7 @@ public class MergeIntervals {
 				int[] intArr = new int[2];
 				intArr[0] = preStart;
 				intArr[1] = preEnd;
-				res.add(intArr);
+				resultLi.add(intArr);
 				preStart = intervals[i][0];
 				preEnd = intervals[i][1];
 			} else { // Overlapped
@@ -84,13 +84,32 @@ public class MergeIntervals {
 		int[] intArr = new int[2];
 		intArr[0] = preStart;
 		intArr[1] = preEnd;
-		res.add(intArr);
-		int[][] resArr = new int[res.size()][2];
-		for (int i = 0; i < res.size(); i++) {
-			int[] arr = res.get(i);
-			resArr[i] = arr;
-		}
-		return resArr;
+		resultLi.add(intArr);
+		/*
+		 * Returns an array containing all of the elements in this list in proper sequence (from first to last element); 
+		 * the runtime type of the returned array is that of the specified array. 
+		 * If the list fits in the specified array, it is returned therein. 
+		 * Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list.
+		 * 
+		 * Type Parameters:
+		 * T - the runtime type of the array to contain the collection
+		 * 
+		 * Parameters:
+		 * a - the array into which the elements of this list are to be stored, 
+		 * if it is big enough; otherwise, 
+		 * a new array of the same runtime type is allocated for this purpose.
+		 * 
+		 * Returns:
+		 * an array containing the elements of this list 
+		 * 
+		 * Suppose x is a list known to contain only strings. 
+		 * The following code can be used to dump the list into a newly allocated array of String:
+		 * String[] y = x.toArray(new String[0]);
+		 * 
+		 * Note that toArray(new Object[0]) is identical in function to toArray().
+		 * 
+		 */
+		return resultLi.toArray(new int[resultLi.size()][2]);
 	}
 
 	// Array List as Input & Output
